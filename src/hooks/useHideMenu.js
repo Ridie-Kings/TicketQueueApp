@@ -5,7 +5,6 @@ export const useHideMenu = (hide) => {
 
     const { showMenu, hideMenu } = useContext(UiContext)
     useEffect(() => {
-        console.log('hide menu:', hide);
         if (hide) {
             hideMenu()
         } else {

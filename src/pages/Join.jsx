@@ -13,14 +13,13 @@ export const Join = () => {
     const navigate = useNavigate();
     const [user] = useState(getUserStorage())
 
-    console.log(user);
 
     useHideMenu(false);
 
 
-    const onFinish = ({ agente, escritorio }) => {
-        localStorage.setItem('agente', agente);
-        localStorage.setItem('escritorio', escritorio);
+    const onFinish = ({ agent, desktop }) => {
+        localStorage.setItem('agent', agent);
+        localStorage.setItem('desktop', desktop);
 
         navigate('/desktop');
     };
@@ -30,8 +29,8 @@ export const Join = () => {
     };
 
     useEffect(() => {
-        if (user.agente && user.escritorio) navigate('/desktop')
-    }, [navigate, user.agente, user.escritorio])
+        if (user.agent && user.desktop) navigate('/desktop')
+    }, [navigate, user.agent, user.desktop])
 
 
 
@@ -60,7 +59,7 @@ export const Join = () => {
             >
                 <Form.Item
                     label="Nombre del agente"
-                    name="agente"
+                    name="agent"
                     rules={[
                         {
                             required: true,
@@ -73,7 +72,7 @@ export const Join = () => {
 
                 <Form.Item
                     label="Escritorio"
-                    name="escritorio"
+                    name="desktop"
                     rules={[
                         {
                             required: true,
