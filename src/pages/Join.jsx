@@ -1,5 +1,5 @@
-import { Button, Divider, Form, Input, InputNumber, Typography } from 'antd';
-import { SaveOutlined } from '@ant-design/icons';
+import { Form, Input, InputNumber, Button, Typography, Card, Space } from 'antd';
+import { UserOutlined, DesktopOutlined, LoginOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useHideMenu } from '../hooks/useHideMenu';
 import { useEffect, useState } from 'react';
@@ -35,80 +35,67 @@ export const Join = () => {
 
 
     return (
-        <>
-            <Title level={2}>Ingresar</Title>
-            <Text>Ingrese su nombre y número de escritorio</Text>
-            <Divider />
+        <Card
+            style={{
+                maxWidth: 400,
+                margin: '0 auto',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                borderRadius: '15px'
+            }}
+        >
+
+            <Title level={2} style={{ textAlign: 'center', marginBottom: '24px' }}>
+                Ingresar
+            </Title>
+            <Text type='secondary' style={{ fontSize: 16 }}>Ingrese su nombre y número de escritorio</Text>
+
             <Form
-                name="basic"
-                labelCol={{
-                    span: 8,
-                }}
-                wrapperCol={{
-                    span: 14,
-                }}
-                style={{
-                    maxWidth: 600,
-                }}
-                initialValues={{
-                    remember: true,
-                }}
+                name="login"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
+                layout="vertical"
             >
                 <Form.Item
-                    label="Nombre del agente"
                     name="agent"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Por favor, ingrese su nombre',
-                        },
-                    ]}
+                    rules={[{ required: true, message: 'Por favor, ingrese su nombre' }]}
                 >
-                    <Input />
+                    <Input
+                        prefix={<UserOutlined />}
+                        placeholder="Nombre del agente"
+                        size="large"
+                    />
                 </Form.Item>
-
                 <Form.Item
-                    label="Escritorio"
                     name="desktop"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Ingrese el número del escritorio',
-                        },
-                    ]}
+                    rules={[{ required: true, message: 'Ingrese el número del escritorio' }]}
                 >
-                    <InputNumber min={1} max={99} />
+                    <InputNumber
+                        prefix={<DesktopOutlined />}
+                        placeholder="Número de escritorio"
+                        min={1}
+                        max={99}
+                        style={{ width: '100%' }}
+                        size="large"
+                    />
                 </Form.Item>
-
-                <Form.Item
-                    name="remember"
-                    valuePropName="checked"
-                    wrapperCol={{
-                        offset: 8,
-                        span: 14,
-                    }}
-                >
-                </Form.Item>
-
-                <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 10,
-                    }}
-                >
+                <Form.Item>
                     <Button
                         type="primary"
                         htmlType="submit"
-                        shape='round'
+                        icon={<LoginOutlined />}
+                        size="large"
+                        block
+                        style={{
+                            height: '50px',
+                            borderRadius: '25px',
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }}
                     >
-                        <SaveOutlined />
                         Ingresar
                     </Button>
                 </Form.Item>
             </Form>
-        </>
+        </Card>
     )
 }

@@ -1,0 +1,103 @@
+.modern-layout {
+  min-height: 100vh;
+}
+
+.modern-header {
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+  height: auto;
+  line-height: 1.5;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.user-details {
+  flex-grow: 1;
+  min-width: 0; /* Esto permite que el contenido se encoja si es necesario */
+}
+
+.user-details .ant-typography {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exit-button {
+  flex-shrink: 0;
+}
+
+.modern-content {
+  padding: 24px;
+  background-color: #f0f2f5;
+}
+
+.main-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.user-info-card {
+  background-color: #f9f9f9;
+}
+
+.desktop-icon {
+  font-size: 48px;
+  color: #1890ff;
+}
+
+.ticket-info,
+.no-ticket-info {
+  text-align: center;
+}
+
+.no-ticket-info .ant-typography {
+  font-size: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modern-header {
+    padding: 12px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .user-info {
+    margin-bottom: 12px;
+    margin-right: 0;
+  }
+
+  .user-details {
+    flex-grow: 1;
+  }
+
+  .exit-button {
+    align-self: flex-end;
+  }
+
+  .modern-content {
+    padding: 16px;
+  }
+
+  .user-info-card .ant-card-body {
+    padding: 16px;
+  }
+}
