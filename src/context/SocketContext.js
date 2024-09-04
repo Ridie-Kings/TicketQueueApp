@@ -1,13 +1,15 @@
 import { createContext } from "react";
 import { useSocket } from "../hooks/useSocket";
-import PropTypes from "prop-types"; // Add this line
+import PropTypes from "prop-types";
 
 
 export const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
 
-    const { socket, online } = useSocket('http://localhost:8080');
+    const { socket, online } = useSocket(process.env.REACT_APP_SOCKET_URL || 'http://localhost:8080');
+    console.log(socket, online);
+
 
     return (
         <SocketContext.Provider value={{ socket, online }}>
