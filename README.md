@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Ticket App
+The Ticket App is a React-based application that allows users to create, manage, and view tickets for a customer support system.
+## Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Join: Users can join the application and enter their name and desk number.
+- Queue: Users can view the queue of tickets and their current position in the queue.
+- Create Ticket: Users can create new tickets by providing a title, description, and priority.
+- Desktop: The desktop view allows users to manage the queue of tickets and update their status.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+- React
+- React Router
+- Ant Design
+- Socket.IO
+- Dotenv
 
-### `npm start`
+## Installation and Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```Copy
+git clone https://github.com/your-username/ticket-app.git
+```
+2. Navigate to the project directory:
+```Copy
+cd ticket-app
+```
+3. Install the dependencies:
+```Copy
+npm install
+```
+4. Create a .env file in the root directory of the project and add the following environment variable:
+```Copy
+REACT_APP_SOCKET_SERVER_URL=<your-socket-server-url>
+Replace <your-socket-server-url> with the URL of your Socket.IO server.
+```
+5. Start the development server:
+```Copy
+npm start
+```
 
-### `npm test`
+The application should now be available at http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Folder Structure
+The project's folder structure is as follows:
+```
+Copyticket-app/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── TicketItem.jsx
+│   │   └── ...
+│   ├── context/
+│   │   ├── SocketContext.jsx
+│   │   └── UIContext.jsx
+│   ├── pages/
+│   │   ├── CreateTicketPage.jsx
+│   │   ├── DesktopPage.jsx
+│   │   ├── Join.jsx
+│   │   ├── Queue.jsx
+│   │   └── RouterPage.jsx
+│   ├── styles/
+│   │   ├── desktop.css
+│   │   └── queue.css
+│   ├── utils/
+│   │   ├── useHideMenu.js
+│   │   ├── useSocket.js
+│   │   ├── getLasts.js
+│   │   └── getUserStorage.js
+│   ├── index.css
+│   ├── index.jsx
+│   └── TicketApp.jsx
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+```
+## Pages
 
-### `npm run build`
+### CreateTicketPage.jsx
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This page allows users to create a new ticket. It displays a button that, when clicked, emits a "request-ticket" event to the Socket.IO server and receives a new ticket object, which is then displayed to the user.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### DesktopPage.jsx
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This page is the desktop view of the application. It displays the current user's information, the next ticket to be attended, and the ability to call the next ticket. It also includes a button to log out of the desktop view.
 
-### `npm run eject`
+### Join.jsx
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This page is the entry point of the application. Users can enter their name and desk number to join the application. The user's information is stored in the browser's local storage.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Utility Files
+-  SocketContext.jsx: This file sets up the context for managing the Socket.IO connection in the application.
+- UIContext.jsx: This file sets up the context for managing the visibility of the menu in the application.
+- useHideMenu.js: This custom hook is used to show or hide the menu based on the current page.
+- useSocket.js
+This custom hook is used to connect to the Socket.IO server and manage the connection state.
+- getLasts.js: This utility function fetches the last tickets from the server.
+- getUserStorage.js: This utility function retrieves the user's information from the browser's local storage.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License.
